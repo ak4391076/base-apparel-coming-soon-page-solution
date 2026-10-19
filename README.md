@@ -30,7 +30,7 @@ Users should be able to:
 ### Links
 
 - [Solution](https://github.com/ak4391076/base-apparel-coming-soon-page-solution)
-- [Live site](https://your-live-site-url.com)
+- [Live site](https://ak4391076.github.io/base-apparel-coming-soon-page-solution/)
 
 ## My process
 
