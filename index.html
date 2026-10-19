@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Base Apparel coming soon solution</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300..600&display=swap");
+      :root {
+        --color-pink-400: hsl(0, 36%, 70%);
+        --color-red-500: hsl(0, 93%, 68%);
+        --color-gray-900: hsl(0, 6%, 24%);
+
+        --gradient-background: linear-gradient(
+          135deg,
+          hsl(0, 0%, 100%),
+          hsl(0, 100%, 98%)
+        );
+        --gradient-primary: linear-gradient(
+          135deg,
+          hsl(0, 80%, 86%),
+          hsl(0, 74%, 74%)
+        );
+        --gradient-button-hover: linear-gradient(
+          135deg,
+          hsl(0, 90%, 96%),
+          hsl(0, 84%, 84%)
+        );
+
+        --font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
+
+        --text-sm: 0.875rem;
+        --text-base: 1rem;
+
+        --radius-pill: 999px;
+
+        --shadow-button: 0 15px 20px hsl(0deg 43.56% 60.39% / 24%);
+        --shadow-button-hover: 0 15px 24px hsl(0deg 43.56% 60.39% / 48%);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        min-height: 100%;
+      }
+      body {
+        font-family: var(--font-family);
+        font-optical-sizing: auto;
+        font-weight: normal;
+        font-style: normal;
+      }
+      .main-container {
+        min-height: 100vh;
+        min-height: 100dvh;
+        background: var(--gradient-background);
+      }
+      .content-container {
+        display: flex;
+        flex-direction: column;
+      }
+      .logo-container {
+        display: flex;
+        align-items: center;
+        height: 84px;
+        padding: 0 32px;
+      }
+      .logo {
+        height: clamp(1.25rem, 1.0526rem + 0.9868vw, 2rem);
+      }
+      .hero-mobile {
+        width: 100%;
+        object-fit: cover;
+      }
+      .content {
+        padding: 58px 32px;
+        text-align: center;
+      }
+      .content h1 {
+        font-size: clamp(2.25rem, 1.7895rem + 2.3026vw, 4rem);
+        line-height: 1.04;
+        letter-spacing: clamp(10px, 8.02px + 0.62vw, 17.5px);
+        text-transform: uppercase;
+      }
+      .content h1 span {
+        display: block;
+        color: var(--color-pink-400);
+        font-weight: 300;
+      }
+      .content h1 strong {
+        color: var(--color-gray-900);
+        font-weight: 600;
+      }
+      .content .description {
+        color: var(--color-pink-400);
+        font-size: clamp(0.875rem, 0.8421rem + 0.1645vw, 1rem);
+        line-height: 1.55;
+        margin: 16px auto 0;
+        max-width: 360px;
+      }
+      .subscribe-form {
+        margin: 32px auto 0;
+        width: 100%;
+        max-width: 360px;
+      }
+      .subscribe-form .field-container {
+        display: grid;
+        grid-template-areas: "stack";
+      }
+      .subscribe-form label {
+        grid-area: stack;
+      }
+      .subscribe-form .email {
+        appearance: none;
+        grid-area: stack;
+        border: 0;
+        outline: 1px solid rgba(194, 143, 143, 0.52);
+        outline-offset: -1px;
+        border-radius: var(--radius-pill);
+        padding: 0 104px 0 24px;
+        background: transparent;
+        color: var(--color-gray-900);
+        font: 400 var(--text-sm) var(--font-family);
+      }
+      .subscribe-form .email::placeholder {
+        color: var(--color-pink-400);
+        opacity: 0.5;
+      }
+      .subscribe-form .email.invalid {
+        outline: 2px solid var(--color-red-500);
+        outline-offset: -2px;
+      }
+      .subscribe-form .email:focus-visible.invalid {
+        outline: 2px solid var(--color-red-500);
+        outline-offset: -2px;
+      }
+      .subscribe-form .email:focus-visible {
+        outline: 2px solid var(--color-pink-400);
+        outline-offset: -2px;
+      }
+      .submit-container {
+        grid-area: stack;
+        justify-self: end;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .subscribe-form .error-icon {
+        height: 24px;
+        width: 24px;
+      }
+      .subscribe-form .submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-self: end;
+        background: var(--gradient-primary);
+        border-radius: var(--radius-pill);
+        border-width: 0;
+        cursor: pointer;
+        height: 48px;
+        width: 64px;
+        box-shadow: var(--shadow-button);
+        transition:
+          box-shadow 200ms ease,
+          transform 200ms ease;
+      }
+      .subscribe-form .submit:hover {
+        background: var(--gradient-button-hover);
+        box-shadow: var(--shadow-button-hover);
+      }
+      .subscribe-form .submit:active {
+        transform: scale(0.96);
+      }
+      .subscribe-form .submit:focus-visible {
+        outline: 2px solid var(--color-pink-400);
+        outline-offset: -2px;
+      }
+      .message {
+        font-size: 13px;
+        line-height: 215%;
+        padding-left: 24px;
+        text-align: left;
+        margin-top: 8px;
+      }
+      .message.valid {
+        color: oklch(72.3% 0.219 149.579);
+      }
+      .message.invalid {
+        color: var(--color-red-500);
+      }
+      .hero-desktop-container {
+        display: none;
+      }
+      @media screen and (min-width: 48rem) {
+        .main-container {
+          display: grid;
+          grid-template-columns: minmax(0, 57.6%) minmax(0, 42.4%);
+          background: none;
+        }
+        .content-container {
+          background:
+            url("./assets/images/bg-pattern-desktop.svg"),
+            var(--gradient-background);
+          background-size: 100% 100%;
+          padding: 64px clamp(32px, 6vw, 96px) 48px clamp(32px, 8vw, 120px);
+        }
+        .logo-container {
+          height: auto;
+          padding: 0;
+        }
+        .hero-mobile {
+          display: none;
+        }
+        .content {
+          padding: 0;
+          text-align: start;
+          margin-top: clamp(5rem, calc(3.75rem + 8.333vh), 8.25rem);
+          max-width: 436px;
+        }
+        .content h1 {
+          line-height: 1.03;
+        }
+        .content .description {
+          line-height: 1.85;
+          margin: 16px 0 0;
+          max-width: 432px;
+        }
+        .subscribe-form {
+          margin: 32px 0 0;
+          max-width: 436px;
+        }
+        .subscribe-form .email {
+          font-size: var(--text-base);
+          padding-right: 140px;
+        }
+        .subscribe-form .submit {
+          height: 56px;
+          width: 100px;
+        }
+        .message {
+          padding-left: 32px;
+          margin-top: 4px;
+        }
+        .hero-desktop-container {
+          display: block;
+          min-width: 0;
+          min-height: 100vh;
+          overflow: hidden;
+        }
+        .hero-desktop-container img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      @media screen and (min-width: 96rem) {
+        .content-container {
+          padding-left: max(11.5vw, calc((57.6vw - 480px) / 2));
+          padding-right: max(6vw, 64px);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      .hidden {
+        display: none;
+      }
+      .screen-reader-only:not(:focus):not(:active) {
+        border-width: 0;
+        clip-path: inset(50%);
+        height: 1px;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main-container">
+      <section class="content-container" aria-label="Base Apparel coming soon">
+        <div class="logo-container">
+          <img
+            class="logo"
+            src="./assets/images/logo.svg"
+            alt="Base Apparel Logo"
+          />
+        </div>
+        <img
+          class="hero-mobile"
+          src="./assets/images/hero-mobile.jpg"
+          alt="Fashion portrait of a woman wearing a peach blouse in a botanical setting"
+        />
+        <div class="content">
+          <h1>
+            <span>We're</span> <strong>coming<br />soon</strong>
+          </h1>
+          <p class="description">
+            Hello fellow shoppers! We're currently building our new fashion
+            store. Add your email below to stay up-to-date with announcements
+            and our launch deals.
+          </p>
+          <form class="subscribe-form" id="subscribe-form" novalidate>
+            <div class="field-container">
+              <label for="email" class="screen-reader-only"
+                >Email address</label
+              >
+              <input
+                class="email"
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="Email Address"
+                aria-describedby="message"
+                required
+              />
+              <div class="submit-container">
+                <img
+                  aria-hidden="true"
+                  class="error-icon hidden"
+                  id="error-icon"
+                  src="./assets/images/icon-error.svg"
+                  alt=""
+                />
+                <button
+                  class="submit"
+                  type="submit"
+                  aria-label="Submit email address"
+                >
+                  <img
+                    aria-hidden="true"
+                    src="./assets/images/icon-arrow.svg"
+                    alt=""
+                  />
+                </button>
+              </div>
+            </div>
+            <p class="message" id="message" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+      <div class="hero-desktop-container" aria-hidden="true">
+        <img
+          class="hero-desktop"
+          src="./assets/images/hero-desktop.jpg"
+          alt=""
+        />
+      </div>
+    </main>
+    <script>
+      const form = document.getElementById("subscribe-form");
+      const email = document.getElementById("email");
+      const icon = document.getElementById("error-icon");
+      const message = document.getElementById("message");
+
+      function setValidationState(valid) {
+        email.classList.toggle("valid", valid);
+        email.classList.toggle("invalid", !valid);
+        email.setAttribute("aria-invalid", String(!valid));
+
+        icon.classList.toggle("hidden", valid);
+        message.classList.toggle("valid", valid);
+        message.classList.toggle("invalid", !valid);
+
+        if (valid) {
+          message.removeAttribute("role");
+          message.textContent = "Your email address looks valid.";
+        } else {
+          message.setAttribute("role", "alert");
+          message.textContent = email.value
+            ? "Please provide a valid email address."
+            : "Please enter your email address.";
+        }
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        email.value = email.value.trim();
+
+        const valid = email.value.length > 0 && email.validity.valid;
+
+        setValidationState(valid);
+
+        if (!valid) {
+          email.focus();
+        }
+      });
+
+      email.addEventListener("input", () => {
+        email.classList.remove("valid", "invalid");
+        email.setAttribute("aria-invalid", "false");
+
+        icon.classList.add("hidden");
+        message.classList.remove("valid", "invalid");
+        message.removeAttribute("role");
+        message.textContent = "";
+      });
+    </script>
+  </body>
+</html>
